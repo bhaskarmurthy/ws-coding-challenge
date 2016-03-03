@@ -14,7 +14,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by bhaskar on 2016-03-01
+ * Module to provide instances related to network operations
  */
 @Module
 public class NetworkModule {
@@ -22,11 +22,21 @@ public class NetworkModule {
     private final String mRootUrl;
     private final String mToken;
 
+    /**
+     * Constructor
+     *
+     * @param rootUrl Root url of API
+     * @param token User token
+     */
     public NetworkModule(String rootUrl, String token) {
         mRootUrl = rootUrl;
         mToken = token;
     }
 
+    /**
+     * Provide an HTTP client for use in API
+     * @return HTTP client
+     */
     @Provides
     public OkHttpClient provideHttpClient() {
         // set up http logging
@@ -40,6 +50,11 @@ public class NetworkModule {
         return client;
     }
 
+    /**
+     * Provide a client to make requests on API service
+     * @param client {@link OkHttpClient} to use in api client
+     * @return API client
+     */
     @Provides
     public WealthsimpleAPI provideApi(OkHttpClient client) {
         Retrofit retrofit = new Retrofit.Builder()

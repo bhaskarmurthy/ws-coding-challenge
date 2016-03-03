@@ -15,6 +15,8 @@ public class WealthsimpleCodingChallengeApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // initialize application component
         mComponent = DaggerApplicationComponent.builder()
                 .networkModule(new NetworkModule(BuildConfig.API_URL, BuildConfig.AUTH_TOKEN))
                 .build();

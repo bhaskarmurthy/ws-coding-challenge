@@ -20,7 +20,8 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by bhaskar on 2016-03-01
+ * Presenter for Main component.
+ * Given a command, execute request against API and show message or error
  */
 public class MainPresenter {
     private static final String TAG = "MainPresenter";
@@ -48,6 +49,10 @@ public class MainPresenter {
         showResponse();
     }
 
+    /**
+     * Send command to API, show message or error based on API response
+     * @param command Command to send
+     */
     public void sendCommand(String command) {
         if (TextUtils.isEmpty(command)) {
             mView.showError("Command required");
@@ -90,6 +95,9 @@ public class MainPresenter {
                 });
     }
 
+    /**
+     * Show response based on error state
+     */
     private void showResponse() {
         if (mIsError) {
             mView.showError(mResponse);

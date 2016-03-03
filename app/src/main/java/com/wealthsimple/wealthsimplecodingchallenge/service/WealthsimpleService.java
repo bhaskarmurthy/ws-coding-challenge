@@ -11,6 +11,11 @@ import rx.Observable;
  * Created by bhaskar on 2016-03-01
  */
 public interface WealthsimpleService {
+    /**
+     * Get a candidate response based on command
+     * @param candidate Candidate request body
+     * @return Candidate response
+     */
     @PUT("candidates")
     Observable<Candidate> getCandidate(@Body JsonObject candidate);
 }

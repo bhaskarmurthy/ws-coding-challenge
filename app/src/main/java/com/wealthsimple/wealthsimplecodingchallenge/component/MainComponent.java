@@ -8,7 +8,7 @@ import com.wealthsimple.wealthsimplecodingchallenge.view.MainActivity;
 import dagger.Component;
 
 /**
- * Created by bhaskar on 2016-03-01
+ * Component to contain modules related to Main activity
  */
 @PerActivity
 @Component(

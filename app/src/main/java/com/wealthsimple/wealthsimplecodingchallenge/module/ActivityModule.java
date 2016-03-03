@@ -7,16 +7,25 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by bhaskar on 2016-03-01
+ * Module to provide instances related to a single activity
  */
 @Module
 public class ActivityModule {
     private Activity mActivity;
 
+    /**
+     * Constructor
+     *
+     * @param activity {@link Activity} represented by this module
+     */
     public ActivityModule(Activity activity) {
         mActivity = activity;
     }
 
+    /**
+     * Provide activity context
+     * @return {@link Context} for activity represented by this module
+     */
     @Provides
     public Context provideContext() {
         return mActivity;

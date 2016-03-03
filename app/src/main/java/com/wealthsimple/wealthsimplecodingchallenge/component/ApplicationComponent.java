@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Created by bhaskar on 2016-03-01
+ * Component to contain application-wide modules
  */
 @Singleton
 @Component(modules = NetworkModule.class)

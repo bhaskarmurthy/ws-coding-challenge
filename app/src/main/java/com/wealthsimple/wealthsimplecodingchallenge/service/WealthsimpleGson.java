@@ -26,6 +26,7 @@ public class WealthsimpleGson {
             synchronized (WealthsimpleGson.class) {
                 if (sInstance == null) {
                     sInstance = new GsonBuilder()
+                            // register adapter to parse Candidate response
                             .registerTypeAdapter(Candidate.class, new JsonDeserializer<Candidate>() {
                                 @Override
                                 public Candidate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -41,6 +42,7 @@ public class WealthsimpleGson {
                                     }
                                 }
                             })
+                            // register adapter to parse Error response
                             .registerTypeAdapter(Error.class, new JsonDeserializer<Error>() {
                                 @Override
                                 public Error deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
