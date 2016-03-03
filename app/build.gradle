@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.wealthsimple.wealthsimplecodingchallenge"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_URL", "\"http://bot.wealthsimple.com/api/\""
+            buildConfigField "String", "AUTH_TOKEN", "\"6b681c89-65b6-4372-a8e7-288d26074394\""
+        }
+        release {
+            buildConfigField "String", "API_URL", "\"http://bot.wealthsimple.com/api/\""
+            buildConfigField "String", "AUTH_TOKEN", "\"6b681c89-65b6-4372-a8e7-288d26074394\""
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.jakewharton:butterknife:7.0.1' // view injection
+    compile 'com.google.dagger:dagger:2.0.2' // dependency injection
+    provided 'com.google.dagger:dagger-compiler:2.0.2' // dependency inject code generation
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'io.reactivex:rxandroid:1.1.0' // reactive extensions for android
+    compile 'io.reactivex:rxjava:1.1.0' // reactive extensions
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0' // log http requests to console
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4' // api client
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4' // json parsing for retrofit
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4' // rxjava adapter for retrofit
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19' // mocking for unit tests
+    testCompile 'org.powermock:powermock-module-junit4:1.6.3' // powermock for mocking static
+    testCompile 'org.powermock:powermock-api-mockito:1.6.3' // powermock mockito integration
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5' // Set this dependency to use JUnit 4 rules
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1' // Set this dependency to build and run Espresso tests
+}
