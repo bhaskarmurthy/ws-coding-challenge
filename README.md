@@ -29,3 +29,9 @@ Using dependency injection, we can instantiate a mock API when performing unit t
 * `org.mockito:mockito` - Mock objects for testing
 * `org.powermock:powermock` - Mock static objects for testing
 * `com.android.support.test:espresso` - UI testing
+
+## Improvements **
+* Increase test coverage by adding more unit tests for business logic (especially error cases)
+* Add more rigorous UI tests
+* Handle caching API requests
+* Add proguard rules to preserve classes from 3rd party libraries
